@@ -18,9 +18,9 @@ network:
           - 8.8.8.8
           - 1.1.1.1
 Команда:
-    sudo ip addr add 192.168.0.9/255.255.255.0 broadcasts 192.168.0.225
-    dev enp0s3
-    ping ya.ru
+   * sudo ip addr add 192.168.0.9/255.255.255.0 broadcasts 192.168.0.225
+   * dev enp0s3
+   * ping ya.ru
    
 Настроить правила iptables для доступности сервисов на TCP-портах 22, 80 и 443. Также сервер должен иметь возможность устанавливать подключения к серверу обновлений.
 
@@ -31,13 +31,13 @@ network:
  * iptables -A INPUT -m state --state ESTABLISHED, RELATED -j ACCEPT
  * iptables -P INPUT DROP
 
-* Запретить любой входящий трафик с IP 3.4.5.6.
-  iptables -I INPUT -s 3.4.5.6 -j DROP
+Запретить любой входящий трафик с IP 3.4.5.6.
+  * iptables -I INPUT -s 3.4.5.6 -j DROP
 
-* * Запросы на порт 8090 перенаправлять на порт 80 (на этом же сервере).
-  iptables -t nat - I PREROUTING -p tcp --dport 8090 -j REDIRECT --to-port 80
+Запросы на порт 8090 перенаправлять на порт 80 (на этом же сервере).
+  * iptables -t nat - I PREROUTING -p tcp --dport 8090 -j REDIRECT --to-port 80
   
-* * Разрешить подключение по SSH только из сети 192.168.0.0/24.
-  iptables -I INPUT -p  TCP --dport 22 -j DROP
-  iptables -I INPUT -p  TCP --dport 22 -s 192.168.0.0/24 -j ACCEPT
+Разрешить подключение по SSH только из сети 192.168.0.0/24.
+  * iptables -I INPUT -p  TCP --dport 22 -j DROP
+  * iptables -I INPUT -p  TCP --dport 22 -s 192.168.0.0/24 -j ACCEPT
           
