@@ -3,20 +3,20 @@
  Остальные подключения запретить.
 
 
-network:
-  version: 2
-  renderer: networkd
-  ethernets:
-    enp0s3:
-      dhcp4: no
-      addresses: [192.168.0.8/24]
-      routes:
-        - to: default
-          via: 192.168.0.254
-      nameservers:
-        addresses:
-          - 8.8.8.8
-          - 1.1.1.1
+*network:
+  *version: 2
+  *renderer: networkd
+  *ethernets:
+    *enp0s3:
+      *dhcp4: no
+      *addresses: [192.168.0.8/24]
+      *routes:
+       * - to: default
+        *  via: 192.168.0.254
+     * nameservers:
+        *addresses:
+         * - 8.8.8.8
+         * - 1.1.1.1
 Команда:
    * sudo ip addr add 192.168.0.9/255.255.255.0 broadcasts 192.168.0.225
    * dev enp0s3
