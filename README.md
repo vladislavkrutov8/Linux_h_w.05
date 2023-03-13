@@ -1,5 +1,5 @@
 Задание:
-* Настроить статическую конфигурацию (без DHCP) в Ubuntu через ip и netplan. Настроить IP, маршрут по умолчанию и DNS-сервера (1.1.1.1 и 8.8.8.8). Проверить работоспособность сети.
+Настроить статическую конфигурацию (без DHCP) в Ubuntu через ip и netplan. Настроить IP, маршрут по умолчанию и DNS-сервера (1.1.1.1 и 8.8.8.8). Проверить работоспособность сети.
  Остальные подключения запретить.
 
 
@@ -22,14 +22,14 @@ network:
     dev enp0s3
     ping ya.ru
    
-* Настроить правила iptables для доступности сервисов на TCP-портах 22, 80 и 443. Также сервер должен иметь возможность устанавливать подключения к серверу обновлений.
+Настроить правила iptables для доступности сервисов на TCP-портах 22, 80 и 443. Также сервер должен иметь возможность устанавливать подключения к серверу обновлений.
 
- iptables -A INPUT -i lo -j ACCEPT
- iptables -A INPUT -p  TCP --dport 22 -j ACCEPT
- iptables -A INPUT -p  TCP --dport 80 -j ACCEPT
- iptables -A INPUT -p  TCP --dport 443 -j ACCEPT
- iptables -A INPUT -m state --state ESTABLISHED, RELATED -j ACCEPT
- iptables -P INPUT DROP
+ * iptables -A INPUT -i lo -j ACCEPT
+ * iptables -A INPUT -p  TCP --dport 22 -j ACCEPT
+ * iptables -A INPUT -p  TCP --dport 80 -j ACCEPT
+ * iptables -A INPUT -p  TCP --dport 443 -j ACCEPT
+ * iptables -A INPUT -m state --state ESTABLISHED, RELATED -j ACCEPT
+ * iptables -P INPUT DROP
 
 * Запретить любой входящий трафик с IP 3.4.5.6.
   iptables -I INPUT -s 3.4.5.6 -j DROP
